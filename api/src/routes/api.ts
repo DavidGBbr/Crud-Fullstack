@@ -3,6 +3,6 @@ import * as ApiController from "../controllers/api.Controller";
 
 const router = Router();
 
-router.get("/teste", ApiController.testController);
+router.get("/", ApiController.getUsers);
 
 export default router;
