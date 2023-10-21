@@ -3,7 +3,7 @@ import { sequelize } from "../instances/mysql";
 
 export interface UserInterface extends Model {
   id: number;
-  name: string;
+  nome: string;
   email: string;
   fone: string;
   data_nascimento: string;
