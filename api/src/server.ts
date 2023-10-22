@@ -6,6 +6,7 @@ import apiRoutes from "./routes/api";
 dotenv.config();
 
 const server = express();
+server.use(express.urlencoded({ extended: true }));
 server.use(cors());
 
 server.use("/api", apiRoutes);
