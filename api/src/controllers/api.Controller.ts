@@ -11,15 +11,32 @@ export const getUsers = async (_: any, res: Response) => {
 };
 
 export const addUser = async (req: Request, res: Response) => {
+  const { nome, email, fone, data_nascimento } = req.body;
   if (req.body.nome) {
-    let newTodo = await User.create({
-      nome: req.body.nome,
-      email: req.body.email,
-      fone: req.body.fone,
-      data_nascimento: req.body.data_nascimento,
+    await User.create({
+      nome,
+      email,
+      fone,
+      data_nascimento,
     });
-    res.status(201).json({ item: newTodo });
+    res.status(201).json({ status: "Usuário criado com sucesso!" });
   } else {
     res.json({ error: "Dados não enviados." });
+  }
+};
+
+export const updateUser = async (req: Request, res: Response) => {
+  const id: string = req.params.id;
+  let user = await User.findByPk(id);
+  const { nome, email, fone, data_nascimento } = req.body;
+  if (user) {
+    user.nome = nome;
+    user.email = email;
+    user.fone = fone;
+    user.data_nascimento = data_nascimento;
+    await user.save();
+    res.json(user);
+  } else {
+    res.json({ error: "Usuário não encontrado." });
   }
 };
