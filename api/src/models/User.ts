@@ -27,7 +27,7 @@ export const User = sequelize.define<UserInterface>(
       type: DataTypes.STRING,
     },
     data_nascimento: {
-      type: DataTypes.DATE,
+      type: DataTypes.STRING,
     },
   },
   { tableName: "usuarios", timestamps: false }
